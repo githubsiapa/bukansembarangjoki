@@ -4,7 +4,7 @@
 define("HOST", "localhost");
 define("UNAME", "root");
 define("PASS", "");
-define("DB", "toko_buku");
+define("DB", "db_coffe");
 
 // tables
 // define("TB_BARANG", "tb_barang");

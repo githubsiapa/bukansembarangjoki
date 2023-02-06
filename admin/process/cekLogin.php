@@ -2,10 +2,10 @@
     include '../../helper/connection.php';
     
 	$username=$_POST['username'];
-    $password=$_POST['password'];
+    $password=md5($_POST['password']);
      
 	$login = "SELECT * from user where username='$username' AND password='$password'";
-	
+	var_dump($password);
 	$login_query = mysqli_query($con,$login);
 	$data = mysqli_fetch_array($login_query);
 
@@ -19,7 +19,7 @@
 		$_SESSION['id_customer'] = $data['id_customer'];
 		$_SESSION['tipe_user'] = $data['tipe_user'];
 
-		if($data['tipe_user'] == "Admin")
+		if($data['id_role'] == "1")
 		{
 			header('location:../dashboard.php');
 		}
