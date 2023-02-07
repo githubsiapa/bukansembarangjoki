@@ -10,7 +10,7 @@
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    $query = "INSERT INTO user VALUES ('','$username','$email_user','$password','$nama','$telp_user','$alamat_user','$jk_user','',2)";
+    $query = "INSERT INTO user VALUES ('','$username','$email_user','$password','$nama','$telp_user','$alamat_user','$jk_user','')";
 
     // menjalankan query isi data
     if (mysqli_query($con, $query))
