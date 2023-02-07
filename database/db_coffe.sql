@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 06, 2023 at 07:03 PM
+-- Generation Time: Feb 07, 2023 at 07:46 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.28
 
@@ -20,6 +20,26 @@ SET time_zone = "+00:00";
 --
 -- Database: `db_coffe`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admin`
+--
+
+CREATE TABLE `admin` (
+  `id_admin` int(11) NOT NULL,
+  `nama` varchar(50) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `password` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`id_admin`, `nama`, `username`, `password`) VALUES
+(1, 'admin', 'admin', '827ccb0eea8a706c4c34a16891f84e7b');
 
 -- --------------------------------------------------------
 
@@ -183,6 +203,7 @@ CREATE TABLE `user` (
   `nama` varchar(100) DEFAULT NULL,
   `telepon` varchar(15) DEFAULT NULL,
   `alamat` varchar(100) NOT NULL,
+  `jk_user` varchar(50) NOT NULL,
   `foto_profil` varchar(100) NOT NULL,
   `id_role` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -191,13 +212,19 @@ CREATE TABLE `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id_user`, `username`, `email`, `password`, `nama`, `telepon`, `alamat`, `foto_profil`, `id_role`) VALUES
-(7, 'user', 'user@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b', 'user', '098123123932', 'Surakarta', '', 2),
-(8, 'admin', 'admin@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b', 'kwa', '09876543', 'kwa', '', 1);
+INSERT INTO `user` (`id_user`, `username`, `email`, `password`, `nama`, `telepon`, `alamat`, `jk_user`, `foto_profil`, `id_role`) VALUES
+(7, 'user', 'user@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b', 'user', '098123123932', 'Surakarta', '', '', 2),
+(8, 'admin', 'admin@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b', 'kwa', '09876543', 'kwa', '', '', 1);
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `admin`
+--
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`id_admin`);
 
 --
 -- Indexes for table `kategori`
@@ -252,6 +279,12 @@ ALTER TABLE `user`
 --
 
 --
+-- AUTO_INCREMENT for table `admin`
+--
+ALTER TABLE `admin`
+  MODIFY `id_admin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `kategori`
 --
 ALTER TABLE `kategori`
@@ -291,7 +324,7 @@ ALTER TABLE `status`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Constraints for dumped tables
