@@ -3,9 +3,9 @@
     include '../../../../../helper/connection.php';
 
     // mendapatkan nilai dari form
-    $id_customer = $_GET['id_customer'];
+    $id_admin = $_GET['id_admin'];
 
-    $query = "DELETE FROM user WHERE id_customer = '$id_customer'";
+    $query = "DELETE FROM admin WHERE id_admin = '$id_admin'";
 
     // menjalankan query isi data
     if (mysqli_query($con, $query))

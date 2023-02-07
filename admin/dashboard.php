@@ -1,6 +1,6 @@
 <?php 
 session_start();
-if(!$_SESSION['username'] && !$_SESSION['password'] && $_SESSION['tipe_user'] != "1")
+if(!$_SESSION['username'] && !$_SESSION['password'] && $_SESSION['role'] != "admin")
 {
     echo "
 		<script type='text/javascript'>

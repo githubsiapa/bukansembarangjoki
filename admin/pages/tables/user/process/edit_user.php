@@ -3,12 +3,17 @@
     include '../../../../../helper/connection.php';
 
     // mendapatkan nilai dari form
-    $id_customer   = $_POST['id_customer'];
+    $id_admin   = $_POST['id_admin'];
+    $nama   = $_POST['nama'];
     $username      = $_POST['username'];
     $password      = $_POST['password'];
-
-    $query = "UPDATE user SET username = '$username', password = '$password' WHERE id_customer = '$id_customer'";
-
+    
+    if($password == ""){
+        $query = "UPDATE admin SET nama = '$nama', username = '$username' WHERE id_admin = '$id_admin'";
+    }else{
+        $query = "UPDATE admin SET nama = '$nama', username = '$username', password = md5('$password') WHERE id_admin = '$id_admin'";
+    }
+    
     // menjalankan query isi data
     if (mysqli_query($con, $query))
     {

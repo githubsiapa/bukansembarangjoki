@@ -4,29 +4,33 @@
 	$username=$_POST['username'];
     $password=md5($_POST['password']);
      
-	$login = "SELECT * from user where username='$username' AND password='$password'";
-	var_dump($password);
-	$login_query = mysqli_query($con,$login);
-	$data = mysqli_fetch_array($login_query);
-
-	$row = mysqli_fetch_assoc($login_query);
+	$login1 = "SELECT * from admin where username='$username' AND password='$password'";
+	$login2 = "SELECT * from user where username='$username' AND password='$password'";
+	$login_query1 = mysqli_query($con,$login1);
+	$data1 = mysqli_fetch_array($login_query1);
+	$login_query2 = mysqli_query($con,$login2);
+	$data2 = mysqli_fetch_array($login_query2);
 	
-	if($data)
+	if($data1)
 	{
 		session_start();
 		$_SESSION['username'] = $data['username'];
 		$_SESSION['password'] = $data['password'];
-		$_SESSION['id_customer'] = $data['id_customer'];
-		$_SESSION['tipe_user'] = $data['tipe_user'];
+		$_SESSION['role'] = "admin";
 
-		if($data['id_role'] == "1")
-		{
-			header('location:../dashboard.php');
-		}
-		else
-		{
-			header('location:../../index.php');
-		}
+
+		header('location:../dashboard.php');
+		
+	}
+	elseif($data2)
+	{
+		session_start();
+		$_SESSION['username'] = $data['username'];
+		$_SESSION['password'] = $data['password'];
+		$_SESSION['role'] = "user";
+		
+		header('location:../../index.php');
+
 	}
 	else
 	{

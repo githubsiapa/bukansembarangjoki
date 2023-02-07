@@ -1,21 +1,19 @@
 <?php
     include('../../../../helper/connection.php');
 
-    $id_customer        = $_POST['id_customer'];
-    $nama_customer      = $_POST['nama_customer'];
-    $jk_customer        = $_POST['jk_customer'];
-    $alamat_customer      = $_POST['alamat_customer'];
-    $email_customer      = $_POST['email_customer'];
-    $telp_customer      = $_POST['telp_customer'];
+    $nama_user      = $_POST['nama_user'];
+    $jk_user        = $_POST['jk_user'];
+    $alamat_user      = $_POST['alamat_user'];
+    $email_user      = $_POST['email_user'];
+    $telp_user      = $_POST['telp_user'];
 
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    $query = "INSERT INTO customer VALUES ('$id_customer','$nama_customer','$jk_customer','$alamat_customer','$email_customer','$telp_customer',0)";
-    $query2 = "INSERT INTO user VALUES ('$username','$password','Customer','$id_customer',0)";
+    $query = "INSERT INTO user VALUES ('','$username','$email_user','$password','$nama','$telp_user','$alamat_user','$jk_user','',2)";
 
     // menjalankan query isi data
-    if (mysqli_query($con, $query) && mysqli_query($con, $query2))
+    if (mysqli_query($con, $query))
     {
         header("Location:../../../index.php");
     }

@@ -42,23 +42,10 @@
                 <div class="card-body">
                     <h2 class="title">Registrasi</h2>
                     <form action="process/add_data.php" method="POST">
-                    <?php 
-                        $tampilkan_isi = "select count(id_customer) as jumlah from customer;";
-                        $tampilkan_isi_sql = mysqli_query($con,$tampilkan_isi);
-                        $no = 1;
-                    
-                        while ($isi = mysqli_fetch_array($tampilkan_isi_sql))
-                        {
-                        $jumlah = $isi['jumlah'];
-                        ?>
-
-                                <input type="hidden" name="id_customer" value="CUS-<?php echo $no+$jumlah; ?>">
-
-                        <?php } ?>
                         <div class="input-group">
                             <label class="label">Nama</label>
                             <div class="rs-select2 js-select-simple select--no-search">
-                                <input class="input--style-4" type="text" name="nama_customer">
+                                <input class="input--style-4" type="text" name="nama_user">
                             </div>
                         </div>
                         <div class="row row-space">
@@ -67,11 +54,11 @@
                                     <label class="label">Jenis Kelamin</label>
                                     <div class="p-t-10">
                                         <label class="radio-container m-r-45">Laki-Laki
-                                            <input type="radio" name="jk_customer" value="Laki-Laki">
+                                            <input type="radio" name="jk_user" value="Laki-Laki">
                                             <span class="checkmark"></span>
                                         </label>
                                         <label class="radio-container">Perempuan
-                                            <input type="radio" name="jk_customer" value="Perempuan">
+                                            <input type="radio" name="jk_user" value="Perempuan">
                                             <span class="checkmark"></span>
                                         </label>
                                     </div>
@@ -81,20 +68,20 @@
                         <div class="input-group">
                             <label class="label">Alamat</label>
                             <div class="rs-select2 js-select-simple select--no-search">
-                                <textarea name="alamat_customer" cols="50" rows="5" class="input--style-4"></textarea>
+                                <textarea name="alamat_user" cols="50" rows="5" class="input--style-4"></textarea>
                             </div>
                         </div>
                         <div class="row row-space">
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">Email</label>
-                                    <input class="input--style-4" type="email" name="email_customer">
+                                    <input class="input--style-4" type="email" name="email_user">
                                 </div>
                             </div>
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">Phone Number</label>
-                                    <input class="input--style-4" type="number" name="telp_customer">
+                                    <input class="input--style-4" type="number" name="telp_user">
                                 </div>
                             </div>
                         </div>

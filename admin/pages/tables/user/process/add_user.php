@@ -3,11 +3,11 @@
     include '../../../../../helper/connection.php';
 
     // mendapatkan nilai dari form
-    $id_customer       = $_POST['id_customer'];
+    $nama       = $_POST['nama'];
     $username    = $_POST['username'];
-    $password      = $_POST['password'];
+    $password      = md5($_POST['password']);
 
-    $query = "INSERT INTO user VALUES ('$username','$password','Customer','$id_customer',0)";
+    $query = "INSERT INTO admin VALUES ('','$nama','$username','$password')";
 
     // menjalankan query isi data
     if (mysqli_query($con, $query))
