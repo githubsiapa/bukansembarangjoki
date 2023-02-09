@@ -3,14 +3,14 @@
     include '../../../../../helper/connection.php';
 
     // mendapatkan nilai dari form
-    $id_customer     = $_POST['id_customer'];
-    $nama_customer    = $_POST['nama_customer'];
-    $jk_customer    = $_POST['jk_customer'];
-    $alamat_customer    = $_POST['alamat_customer'];
-    $email_customer    = $_POST['email_customer'];
-    $telp_customer    = $_POST['telp_customer'];
+    $id_user     = $_POST['id_user'];
+    $nama    = $_POST['nama'];
+    $jk_user    = $_POST['jk_user'];
+    $alamat    = $_POST['alamat'];
+    $email    = $_POST['email'];
+    $telepon    = $_POST['telepon'];
 
-    $query = "UPDATE customer SET nama_customer = '$nama_customer', jk_customer = '$jk_customer', alamat_customer = '$alamat_customer', email_customer = '$email_customer', telp_customer = '$telp_customer' WHERE id_customer = '$id_customer'";
+    $query = "UPDATE user SET nama = '$nama', jk_user = '$jk_user', alamat = '$alamat', email = '$email', telepon = '$telepon' WHERE id_user = '$id_user'";
 
     // menjalankan query isi data
     if (mysqli_query($con, $query))

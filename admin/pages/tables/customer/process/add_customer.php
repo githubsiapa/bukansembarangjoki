@@ -3,14 +3,15 @@
     include '../../../../../helper/connection.php';
 
     // mendapatkan nilai dari form
-    $id_customer        = $_POST['id_customer'];
-    $nama_customer      = $_POST['nama_customer'];
-    $jk_customer        = $_POST['jk_customer'];
-    $alamat_customer      = $_POST['alamat_customer'];
-    $email_customer      = $_POST['email_customer'];
-    $telp_customer      = $_POST['telp_customer'];
+    $nama        = $_POST['nama'];
+    $username      = $_POST['username'];
+    $password      = md5($_POST['password']);
+    $jk_user        = $_POST['jk_user'];
+    $alamat      = $_POST['alamat'];
+    $email      = $_POST['email'];
+    $telepon      = $_POST['telepon'];
 
-    $query = "INSERT INTO customer VALUES ('$id_customer','$nama_customer','$jk_customer','$alamat_customer','$email_customer','$telp_customer',0)";
+    $query = "INSERT INTO user VALUES ('','$username','$email','$password','$nama','$telepon','$alamat','$jk_user','')";
 
     // menjalankan query isi data
     if (mysqli_query($con, $query))
