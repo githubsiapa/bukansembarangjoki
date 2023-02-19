@@ -93,8 +93,8 @@ else
                                         <div id="submenu-5" class="collapse submenu">
                                             <ul class="nav flex-column">
                                                 <li class="nav-item">
-                                                    <a class="nav-link" href="pages/tables/buku/table_buku.php">Data
-                                                        Buku</a>
+                                                    <a class="nav-link" href="pages/tables/menu/table_menu.php">Data
+                                                        Menu</a>
                                                 </li>
                                                 <li class="nav-item">
                                                     <a class="nav-link" href="pages/tables/customer/table_customer.php">Data

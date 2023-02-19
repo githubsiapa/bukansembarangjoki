@@ -3,19 +3,19 @@
     include '../../../../../helper/connection.php';
 
     // mendapatkan nilai dari form
-    $id_buku = $_GET['id_buku'];
+    $id_produk = $_GET['id_produk'];
 
-    $query = "DELETE FROM buku  WHERE id_buku = '$id_buku'";
+    $query = "DELETE FROM produk  WHERE id_produk = '$id_produk'";
 
     // menjalankan query isi data
     if (mysqli_query($con, $query))
     {
-        header("Location:../table_buku.php");
+        header("Location:../table_menu.php");
     }
     else
     {
         $error = urldecode("Data tidak berhasil dihapus");
-        header("Location:../table_buku.php?error=$error");
+        header("Location:../table_menu.php?error=$error");
     }
 
     mysqli_close($con);

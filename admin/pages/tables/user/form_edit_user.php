@@ -133,4 +133,9 @@ else
     <!-- end main wrapper  -->
     <!-- ============================================================== -->
 
+    <script>
+    $(document).ready(function(){
+        $('.list7').addClass('active');
+    });
+    </script>
 <?php } ?>

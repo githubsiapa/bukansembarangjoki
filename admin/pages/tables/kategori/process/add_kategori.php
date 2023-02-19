@@ -6,7 +6,7 @@
     $id_kategori     = $_POST['id_kategori'];
     $nama_kategori    = $_POST['nama_kategori'];
 
-    $query = "INSERT INTO kategori VALUES ('$id_kategori','$nama_kategori',0)";
+    $query = "INSERT INTO kategori VALUES ('$id_kategori','$nama_kategori')";
 
     // menjalankan query isi data
     if (mysqli_query($con, $query))

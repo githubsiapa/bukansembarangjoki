@@ -57,7 +57,7 @@ else
                                 }
                                 ?>
                                 <br><br>
-                                <table class="table table-striped">
+                                <table id="tabell" class="table table-striped">
                                     <thead>
                                         <tr>
                                             <th>#</th>
@@ -133,5 +133,9 @@ else
     <!-- ============================================================== -->
     <!-- end main wrapper  -->
     <!-- ============================================================== -->
-
+    <script>
+    $(document).ready(function(){
+        $('.list2').addClass('active');
+    });
+    </script>
 <?php } ?>

@@ -15,7 +15,10 @@
     <link rel="stylesheet" href="../../../assets/vendor/fonts/material-design-iconic-font/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="../../../assets/vendor/charts/c3charts/c3.css">
     <link rel="stylesheet" href="../../../assets/vendor/fonts/flag-icon-css/flag-icon.min.css">
+    <!-- fancyBox -->
+    <link rel="stylesheet" type="text/css" href="../../../assets/libs/js/fancyapps-fancybox/source/jquery.fancybox.css?v=2.1.5'" media="screen" />
     <link href='../../../../images/logo.png' rel='SHORTCUT ICON' />
+
     <title>Admin | Kencana Media</title>
 </head>
 
@@ -66,7 +69,7 @@
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarNav">
-                        <ul class="navbar-nav flex-column">
+                        <ul class="navbar-nav flex-column ">
                             <li class="nav-divider">
                                 Menu
                             </li>
@@ -81,26 +84,26 @@
                                 <div id="submenu-5" class="collapse submenu show" style="">
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
-                                            <a class="nav-link" href="../buku/table_buku.php">Data Buku</a>
+                                            <a class="nav-link list1" href="../menu/table_menu.php">Data Menu</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="../customer/table_customer.php">Data Customer</a>
+                                            <a class="nav-link list2" href="../customer/table_customer.php">Data Customer</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="../kategori/table_kategori.php">Data
+                                            <a class="nav-link list3" href="../kategori/table_kategori.php">Data
                                                 Kategori</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="../penerbit/table_penerbit.php">Data Penerbit</a>
+                                            <a class="nav-link list4" href="../penerbit/table_penerbit.php">Data Penerbit</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="../pengarang/table_pengarang.php">Data Pengarang</a>
+                                            <a class="nav-link list5" href="../pengarang/table_pengarang.php">Data Pengarang</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="../transaksi/table_transaksi.php">Data Transaksi</a>
+                                            <a class="nav-link list6" href="../transaksi/table_transaksi.php">Data Transaksi</a>
                                         </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link active" href="table_user.php">Data Admin</a>
+                                        <li class="nav-item ">
+                                            <a class="nav-link list7" href="../user/table_user.php">Data Admin</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -132,6 +135,44 @@
     <script src="../../../assets/vendor/charts/c3charts/d3-5.4.0.min.js"></script>
     <script src="../../../assets/vendor/charts/c3charts/C3chartjs.js"></script>
     <script src="../../../assets/libs/js/dashboard-ecommerce.js"></script> 
-</body>
+    <!-- Datatables -->
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+    <!-- fancyBox -->
+    <script type="text/javascript" src="../../../assets/libs/js/fancyapps-fancybox/source/jquery.fancybox.js?v=2.1.5"></script>
 
+
+    <script type="text/javascript">
+		$(document).ready(function() {
+			$(".zoom").fancybox({
+				helpers: {
+					title : {
+						type : 'outside'
+					},
+					overlay : {
+						speedOut : 0
+					}
+				}
+			});
+        });
+    </script>	
+    <script>
+    $(".zoom").fancybox({
+    	openEffect	: 'elastic',
+    	closeEffect	: 'elastic',
+
+    	helpers : {
+    		title : {
+    			type : 'inside'
+    		}
+    	}
+    });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('#tabell').DataTable();
+        });
+    </script>
+</body>
 </html>
