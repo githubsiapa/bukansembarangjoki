@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 07, 2023 at 07:46 PM
+-- Generation Time: Feb 19, 2023 at 08:27 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.28
 
@@ -39,7 +39,7 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`id_admin`, `nama`, `username`, `password`) VALUES
-(1, 'admin', 'admin', '827ccb0eea8a706c4c34a16891f84e7b');
+(1, 'admin', 'admin', '21232f297a57a5a743894a0e4a801fc3');
 
 -- --------------------------------------------------------
 
@@ -61,6 +61,18 @@ INSERT INTO `kategori` (`id_kategori`, `nama_kategori`) VALUES
 (2, 'Makanan Ringan'),
 (3, 'Non Coffe'),
 (4, 'Coffe');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `likes`
+--
+
+CREATE TABLE `likes` (
+  `id_likes` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL,
+  `id_produk` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -135,7 +147,7 @@ CREATE TABLE `produk` (
 --
 
 INSERT INTO `produk` (`id_produk`, `nama_produk`, `harga_produk`, `stok`, `foto_produk`, `deskripsi_produk`, `likes`, `id_kategori`) VALUES
-(1, 'Nasi Goreng', 15000, 0, '7.jpg', 'Nasi Goreng enak dengan campuran telor, sosis, baso, ayam', 2, 1),
+(1, 'Nasi Goreng', 15000, 0, 'logo.png', 'Nasi Goreng enak dengan campuran telor, sosis, baso, ayam', 2, 1),
 (2, 'Bakso', 10000, 0, '9.jpg', 'Bakso yang terbuat dari daging sapi berkualitas dan halal, dijamin sehat', 1, 2),
 (3, 'Ayam Goreng', 20000, 4, '6.jpg', 'Menggunakan daging segar yang sehat dan lezzat', 1, 3),
 (4, 'Es Teh', 5000, 0, '11.jpg', 'Teh segar pengobat dahaga', 2, 3),
@@ -146,26 +158,8 @@ INSERT INTO `produk` (`id_produk`, `nama_produk`, `harga_produk`, `stok`, `foto_
 (9, 'Soup Buah', 15000, 16, '13.jpg', 'Es buah dengan campuran beraneka buah-buahan dan kuah sirup', 0, 3),
 (10, 'Sate Ayam', 11000, 16, '1.jpg', 'Sate ayam lezat dengan bumbu kacang', 0, 1),
 (11, 'Gado gado', 14000, 16, '2.jpg', 'Gado gado lengkap sayuran dan telor', 0, 2),
-(12, 'Kopi Susu', 7000, 1, '15.jpg', '			Kopi nikmat penambah stamina		', 0, 3);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `role`
---
-
-CREATE TABLE `role` (
-  `id_role` int(11) NOT NULL,
-  `role` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `role`
---
-
-INSERT INTO `role` (`id_role`, `role`) VALUES
-(1, 'admin'),
-(2, 'customer');
+(15, 'test', 21312, 231, '', 'sdasd', 0, 2),
+(16, 'Pecel Lele', 5000, 2, 'Screenshot_11.png', 'kgk enak', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -204,17 +198,16 @@ CREATE TABLE `user` (
   `telepon` varchar(15) DEFAULT NULL,
   `alamat` varchar(100) NOT NULL,
   `jk_user` varchar(50) NOT NULL,
-  `foto_profil` varchar(100) NOT NULL,
-  `id_role` int(11) NOT NULL
+  `foto_profil` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id_user`, `username`, `email`, `password`, `nama`, `telepon`, `alamat`, `jk_user`, `foto_profil`, `id_role`) VALUES
-(7, 'user', 'user@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b', 'user', '098123123932', 'Surakarta', '', '', 2),
-(8, 'admin', 'admin@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b', 'kwa', '09876543', 'kwa', '', '', 1);
+INSERT INTO `user` (`id_user`, `username`, `email`, `password`, `nama`, `telepon`, `alamat`, `jk_user`, `foto_profil`) VALUES
+(7, 'user', 'user1@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b', 'user1', '0981231239323', 'Surakarta1', 'Perempuan', ''),
+(11, 'test', 'test@gmail.com', '098f6bcd4621d373cade4e832627b4f6', '', '0852', 'test', 'Laki-Laki', '');
 
 --
 -- Indexes for dumped tables
@@ -231,6 +224,14 @@ ALTER TABLE `admin`
 --
 ALTER TABLE `kategori`
   ADD PRIMARY KEY (`id_kategori`);
+
+--
+-- Indexes for table `likes`
+--
+ALTER TABLE `likes`
+  ADD PRIMARY KEY (`id_likes`),
+  ADD KEY `id_pelanggan` (`id_user`),
+  ADD KEY `id_produk` (`id_produk`);
 
 --
 -- Indexes for table `pembelian`
@@ -256,12 +257,6 @@ ALTER TABLE `produk`
   ADD KEY `id_warung` (`id_kategori`);
 
 --
--- Indexes for table `role`
---
-ALTER TABLE `role`
-  ADD PRIMARY KEY (`id_role`);
-
---
 -- Indexes for table `status`
 --
 ALTER TABLE `status`
@@ -271,8 +266,7 @@ ALTER TABLE `status`
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
-  ADD PRIMARY KEY (`id_user`),
-  ADD KEY `id_role` (`id_role`);
+  ADD PRIMARY KEY (`id_user`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -288,7 +282,13 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `kategori`
 --
 ALTER TABLE `kategori`
-  MODIFY `id_kategori` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_kategori` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `likes`
+--
+ALTER TABLE `likes`
+  MODIFY `id_likes` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `pembelian`
@@ -306,13 +306,7 @@ ALTER TABLE `pembelian_produk`
 -- AUTO_INCREMENT for table `produk`
 --
 ALTER TABLE `produk`
-  MODIFY `id_produk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
-
---
--- AUTO_INCREMENT for table `role`
---
-ALTER TABLE `role`
-  MODIFY `id_role` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_produk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `status`
@@ -324,7 +318,7 @@ ALTER TABLE `status`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- Constraints for dumped tables
@@ -349,12 +343,6 @@ ALTER TABLE `pembelian_produk`
 --
 ALTER TABLE `produk`
   ADD CONSTRAINT `produk_ibfk_1` FOREIGN KEY (`id_kategori`) REFERENCES `kategori` (`id_kategori`);
-
---
--- Constraints for table `user`
---
-ALTER TABLE `user`
-  ADD CONSTRAINT `user_ibfk_1` FOREIGN KEY (`id_role`) REFERENCES `role` (`id_role`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
